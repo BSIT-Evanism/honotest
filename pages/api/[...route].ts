@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 import { prettyJSON } from 'hono/pretty-json'
+import {cors} from 'hono/cors'
 
 export const config = {
   runtime: 'edge'
@@ -9,6 +10,7 @@ export const config = {
 const app = new Hono().basePath('/api')
 
 app.use('*', prettyJSON())
+app.use('*', cors())
 
 app.get('/hello', (c) => {
   return c.json({
