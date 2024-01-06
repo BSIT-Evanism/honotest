@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
-import {prettyJSON} from 'hono/pretty-json'
+import { prettyJSON } from 'hono/pretty-json'
 
 export const config = {
   runtime: 'edge'
@@ -20,7 +20,8 @@ app.get('/users/:id', (c) => {
   const userName: string = c.req.param('id');
 
   return c.json({
-    name: userName
+    name: userName,
+    dub: userName + userName
   })
 })
 
